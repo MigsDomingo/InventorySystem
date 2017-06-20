@@ -1,0 +1,4 @@
+View inventory:
+
+	Table
+	- Date ordered, Date received, Date sold, Serial Number, Brand, Model, Description, Price(?)
