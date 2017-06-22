@@ -1,7 +1,7 @@
 package com.company;/**
  * Created by StarDiamond on 12/05/2017.
  */
-
+//test
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 
@@ -128,6 +129,6 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.show();
 
-
+        primaryStage.setOnCloseRequest(event -> { System.exit(0); });
     }
 }

@@ -1,0 +1,22 @@
+.label-welcome {
+    -fx-font-size: 64pt;
+    -fx-font-family: "Courier New";
+    -fx-text-fill: #CE5A57;
+    -fx-opacity: 0.6;
+}
+
+.hbox-welcome {
+    //-fx-background-color: #444C5C;
+    -fx-alignment: center;
+
+}
+
+.hbox-buttons {
+    -fx-spacing: 100px;
+    -fx-alignment: center;
+}
+
+.button-common {
+    -fx-pref-height: 100px;
+    -fx-pref-width: 150px;
+}

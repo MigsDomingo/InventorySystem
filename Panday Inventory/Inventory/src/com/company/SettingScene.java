@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +34,7 @@ public class SettingScene {
         settingsScene = new Scene(rootSettings, 1280, 720, Color.BLACK);
 
         HBox backBtnHbox = new HBox();
-
+        backBtnHbox.setPadding(new Insets(30));
         ImageView backImage = new ImageView(ICON_URL_BACK);
         backImage.setFitHeight(100);
         backImage.setFitWidth(100);
@@ -50,7 +51,9 @@ public class SettingScene {
         rootSettings.setTop(backBtnHbox);
 
         HBox addModelHbox = new HBox();
+        addModelHbox.setPadding(new Insets(10));
         VBox addModelVbox = new VBox();
+        addModelVbox.setPadding(new Insets(10));
         addModelHbox.getChildren().add(addModelVbox);
 
         //add UI elements
@@ -64,16 +67,24 @@ public class SettingScene {
         TextField serialNoTextField = new TextField();
         Label priceLabel = new Label("Price");
         TextField priceTextField = new TextField();
+        //This makes sure the price textfield is limited to valid numbers
         priceTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if ( !newValue.matches("\\d*\\.\\d*") )  {
+                    try {
                     priceTextField.setText(newValue.replaceAll("[^\\d]", ""));
                     //priceTextField.setText("");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Invalid price detected");
+                    }
                 }
             }
         });
+        Label blankLabel1 = new Label("");
         Button newModelButton = new Button("Add new Model");
+        Label blankLabel2 = new Label("");
         Label errorLabel = new Label("");
 
         final String[] brandText = new String[1];
@@ -118,6 +129,7 @@ public class SettingScene {
                     try {
                         insertProduct(serialNoText[0], brandText[0], modelText[0], descriptionText[0], Double.parseDouble(priceText[0]));
                         errorLabel.setText("Insert successful");
+                        errorLabel.setTextFill(Color.GREEN);
                     }
                     catch (Exception exception) {
                         exception.printStackTrace();
@@ -127,6 +139,7 @@ public class SettingScene {
                 else {
                     errorLabel.setText(err);
                     errorLabel.setVisible(true);
+                    errorLabel.setTextFill(Color.RED);
                 }
 
             }
@@ -141,7 +154,9 @@ public class SettingScene {
         addModelVbox.getChildren().add(descriptionTextField);
         addModelVbox.getChildren().add(priceLabel);
         addModelVbox.getChildren().add(priceTextField);
+        addModelVbox.getChildren().add(blankLabel1);
         addModelVbox.getChildren().add(newModelButton);
+        addModelVbox.getChildren().add(blankLabel2);
         addModelVbox.getChildren().add(errorLabel);
         rootSettings.setCenter(addModelHbox);
     }

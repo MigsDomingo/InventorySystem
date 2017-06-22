@@ -1,6 +1,7 @@
 package com.company;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +24,7 @@ public class OutgoingScene {
         outgoingScene = new Scene(rootSettings, 1280, 720, Color.BLACK);
 
         HBox backBtnHbox = new HBox();
+        backBtnHbox.setPadding(new Insets(30));
 
         ImageView backImage = new ImageView(ICON_URL_BACK);
         backImage.setFitHeight(100);

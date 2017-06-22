@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Panday Inventory/Inventory/Inventory.iml" filepath="$PROJECT_DIR$/Panday Inventory/Inventory/Inventory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Panday Inventory/Panday Inventory.iml" filepath="$PROJECT_DIR$/Panday Inventory/Panday Inventory.iml" />
+    </modules>
+  </component>
+</project>

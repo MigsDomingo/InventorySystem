@@ -82,6 +82,16 @@ public class DatabaseHelper {
         }
     }
 
+    public static void deleteBySerialNum(String tableName, int serialNum) {
+        String statement = "DELETE FROM " + tableName + " WHERE product_serial_no = " + serialNum;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(statement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
     public static void createInsertQuery(String tableName, String[] columns, ArrayList<Object> values) {
         int noOfCols = columns.length;
         String qMarks = "";

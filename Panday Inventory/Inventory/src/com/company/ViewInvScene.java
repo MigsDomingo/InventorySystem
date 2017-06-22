@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class ViewInvScene {
         settingsScene = new Scene(rootSettings, 1280, 720, Color.BLACK);
 
         HBox backBtnHbox = new HBox();
-
+        backBtnHbox.setPadding(new Insets(30));
         ImageView backImage = new ImageView(ICON_URL_BACK);
         backImage.setFitHeight(100);
         backImage.setFitWidth(100);
@@ -166,7 +168,11 @@ public class ViewInvScene {
                     @Override
                     public void handle(ActionEvent event) {
                         table.getItems().remove(row.getItem());
+                        //Remove row item from database
+                        // SUPER IMPORTANT: This deletes only from the table inventory.
+                        DatabaseHelper.deleteBySerialNum("inventory", Integer.parseInt(row.getItem().getSerialNumber()));
                     }
+
                 });
                 contextMenu.getItems().add(removeMenuItem);
                 // Set context menu on row, but use a binding to make it only show for non-empty rows:
